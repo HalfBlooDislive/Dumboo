@@ -55,6 +55,9 @@
       background: #adb5bd;
       color: white;
       position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .message {
@@ -98,7 +101,7 @@
       </div>
 
       <div class="line">
-        MOHAN ke mann ko lubhayegi re, DUMBOO gori gori ✨
+        MOHAN ke mann ko lubhayegi re, <b>RADHA</b> gori gori ✨
       </div>
 
       <div class="line">
@@ -120,20 +123,17 @@
     const question = document.getElementById("question");
     const music = document.getElementById("bgMusic");
 
-    function moveNo() {
+    function moveNoOnClick() {
       const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
       const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     }
 
-    // NO button always escapes 😈
-    moveNo();
-    noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("touchstart", moveNo);
-    noBtn.addEventListener("click", moveNo);
+    // NO moves ONLY on click
+    noBtn.addEventListener("click", moveNoOnClick);
 
-    // YES wins 💖
+    // YES action
     yesBtn.addEventListener("click", () => {
       question.style.display = "none";
       yesBtn.style.display = "none";
