@@ -65,11 +65,8 @@
       line-height: 1.6;
     }
 
-    .song-line {
-      font-size: 1.3rem;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #d6336c;
+    .line {
+      margin-bottom: 10px;
     }
 
     .heart {
@@ -92,23 +89,27 @@
   <div class="card">
     <h1 id="question">Will you be my Valentine, Dumboo? 💖</h1>
 
-    <!-- YES with apple emoji -->
     <button id="yesBtn">Yes 🍎💕</button>
     <button id="noBtn">No 🙅‍♀️</button>
 
     <div class="message" id="message">
-      <div class="song-line">
-        🎶 Mohan ke mann thi bhagayi reee 💖
+      <div class="line">
+        Yes Dumboo 💖 I knew you’d say yes hehe 😊
       </div>
-      <br>
-      no filters, no games—just tamatarsur trying harder to make dumboo  
-      <br>
-      <b>SMILE with her KAJU wali SMILE 😌</b>
+
+      <div class="line">
+        MOHAN ke mann ko lubhayegi re, DUMBOO gori gori ✨
+      </div>
+
+      <div class="line">
+        no filters, no games—just tamatarsur trying harder to make dumboo  
+        <b>SMILE with her KAJU wali SMILE 😌</b>
+      </div>
     </div>
   </div>
 
-  <!-- Music -->
-  <audio id="bgMusic">
+  <!-- Background Music (Looped) -->
+  <audio id="bgMusic" loop>
     <source src="radha.mp3" type="audio/mpeg">
   </audio>
 
@@ -142,7 +143,7 @@
     });
 
     function heartRain() {
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 28; i++) {
         const heart = document.createElement("div");
         heart.className = "heart";
         heart.innerHTML = "💖";
@@ -157,4 +158,3 @@
 
 </body>
 </html>
-
