@@ -107,9 +107,11 @@
       <div class="line">
         Yes Dumboo 💖 I knew you’d say yes hehe 😊
       </div>
+
       <div class="line">
         MOHAN ke mann ko lubhayegi re, <b>RADHA</b> gori gori ✨
       </div>
+
       <div class="line">
         no filters, no games—just tamatarsur trying harder to make dumboo  
         <b>SMILE with her KAJU wali SMILE 😌</b>
@@ -130,15 +132,15 @@
     const question = document.getElementById("question");
     const music = document.getElementById("bgMusic");
 
-    let noClicks = 0;
+    let noClickCount = 0;
 
-    const noTexts = [
-      "...really? 😔",
+    const noTextSteps = [
+      "...really 😔",
       "are you sure?? 😲",
       "plz think again... 🥺",
-      "uh will not change your mind huh!!! 😡",
+      "Uh will not change your mind huh!!! 😡",
       "you left me no choice 😞",
-      "ok then uh WIN 😈 but... here we go again"
+      "ok then uh WIN but... here we go again 😈"
     ];
 
     function moveNoInsideCard() {
@@ -159,10 +161,10 @@
     }
 
     noBtn.addEventListener("click", () => {
-      noClicks++;
+      noClickCount++;
 
-      if (noClicks <= noTexts.length) {
-        noBtn.textContent = noTexts[noClicks - 1];
+      if (noClickCount <= noTextSteps.length) {
+        noBtn.textContent = noTextSteps[noClickCount - 1];
       }
 
       moveNoInsideCard();
