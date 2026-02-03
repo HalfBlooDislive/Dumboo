@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Dumboo 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", "Comic Sans MS", cursive;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      max-width: 90%;
+    }
+
+    h1 {
+      color: #ff3e6c;
+      font-size: 1.9rem;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #ff3e6c;
+      color: white;
+      margin-right: 12px;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      color: white;
+      position: absolute;
+    }
+
+    .message {
+      display: none;
+      font-size: 1.3rem;
+      color: #ff3e6c;
+      line-height: 1.6;
+    }
+
+    .song-line {
+      font-size: 1.4rem;
+      margin-top: 10px;
+      color: #d6336c;
+      font-weight: bold;
+    }
+
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 22px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1 id="question">Will you be my Valentine, Dumboo? 💖</h1>
+
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 🙅‍♀️</button>
+
+    <div class="message" id="message">
+      Yay Dumboo! 💞  
+      I knew you’d say yes 🥰  
+      <div class="song-line">
+        🎶 Mohan ke mann thi bhagayi reee 💖✨
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgMusic">
+    <source src="radha.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const question = document.getElementById("question");
+    const message = document.getElementById("message");
+    const music = document.getElementById("bgMusic");
+
+    moveNoButton();
+
+    function moveNoButton() {
+      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      question.style.display = "none";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+      message.style.display = "block";
+
+      music.play(); // play song
+      heartRain();
+    });
+
+    function heartRain() {
+      for (let i = 0; i < 35; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
