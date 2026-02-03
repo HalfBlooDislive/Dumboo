@@ -24,7 +24,8 @@
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       max-width: 90%;
-      position: relative;
+      width: 320px;
+      position: relative; /* IMPORTANT */
     }
 
     h1 {
@@ -55,7 +56,7 @@
       background: #adb5bd;
       color: white;
       position: absolute;
-      top: 70%;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -89,7 +90,7 @@
 </head>
 <body>
 
-  <div class="card">
+  <div class="card" id="card">
     <h1 id="question">Will you be my Valentine, Dumboo? 💖</h1>
 
     <button id="yesBtn">Yes 🍎💕</button>
@@ -119,19 +120,30 @@
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
+    const card = document.getElementById("card");
     const message = document.getElementById("message");
     const question = document.getElementById("question");
     const music = document.getElementById("bgMusic");
 
-    function moveNoOnClick() {
-      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    function moveNoInsideCard() {
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const padding = 10;
+
+      const maxX = cardRect.width - btnRect.width - padding;
+      const maxY = cardRect.height - btnRect.height - padding;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
+      noBtn.style.transform = "none"; // reset centering
     }
 
-    // NO moves ONLY on click
-    noBtn.addEventListener("click", moveNoOnClick);
+    // Move ONLY when clicked
+    noBtn.addEventListener("click", moveNoInsideCard);
 
     // YES action
     yesBtn.addEventListener("click", () => {
