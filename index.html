@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Dumboo 💖</title>
 
   <style>
@@ -24,6 +24,7 @@
       text-align: center;
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       max-width: 90%;
+      position: relative;
     }
 
     h1 {
@@ -33,18 +34,17 @@
     }
 
     button {
-      padding: 12px 24px;
+      padding: 12px 26px;
       font-size: 1rem;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: transform 0.2s ease;
     }
 
     #yesBtn {
       background: #ff3e6c;
       color: white;
-      margin-right: 12px;
     }
 
     #yesBtn:hover {
@@ -59,16 +59,17 @@
 
     .message {
       display: none;
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       color: #ff3e6c;
+      margin-top: 15px;
       line-height: 1.6;
     }
 
     .song-line {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-top: 10px;
-      color: #d6336c;
       font-weight: bold;
+      color: #d6336c;
     }
 
     .heart {
@@ -91,19 +92,22 @@
   <div class="card">
     <h1 id="question">Will you be my Valentine, Dumboo? 💖</h1>
 
-    <button id="yesBtn">Yes 💕</button>
+    <!-- YES with apple emoji -->
+    <button id="yesBtn">Yes 🍎💕</button>
     <button id="noBtn">No 🙅‍♀️</button>
 
     <div class="message" id="message">
-      Yay Dumboo! 💞  
-      I knew you’d say yes 🥰  
       <div class="song-line">
-        🎶 Mohan ke mann thi bhagayi reee 💖✨
+        🎶 Mohan ke mann thi bhagayi reee 💖
       </div>
+      <br>
+      no filters, no games—just tamatarsur trying harder to make dumboo  
+      <br>
+      <b>SMILE with her KAJU wali SMILE 😌</b>
     </div>
   </div>
 
-  <!-- Audio -->
+  <!-- Music -->
   <audio id="bgMusic">
     <source src="radha.mp3" type="audio/mpeg">
   </audio>
@@ -111,38 +115,34 @@
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
-    const question = document.getElementById("question");
     const message = document.getElementById("message");
+    const question = document.getElementById("question");
     const music = document.getElementById("bgMusic");
 
-    moveNoButton();
-
-    function moveNoButton() {
-      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
+    function moveNo() {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     }
 
-    noBtn.addEventListener("mouseenter", moveNoButton);
-    noBtn.addEventListener("touchstart", moveNoButton);
+    moveNo();
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+    noBtn.addEventListener("click", moveNo);
 
     yesBtn.addEventListener("click", () => {
       question.style.display = "none";
       yesBtn.style.display = "none";
       noBtn.style.display = "none";
       message.style.display = "block";
-
-      music.play(); // play song
+      music.play();
       heartRain();
     });
 
     function heartRain() {
-      for (let i = 0; i < 35; i++) {
+      for (let i = 0; i < 30; i++) {
         const heart = document.createElement("div");
         heart.className = "heart";
         heart.innerHTML = "💖";
