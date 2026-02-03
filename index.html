@@ -108,7 +108,7 @@
     </div>
   </div>
 
-  <!-- Background Music (Looped) -->
+  <!-- Background Music (looped) -->
   <audio id="bgMusic" loop>
     <source src="radha.mp3" type="audio/mpeg">
   </audio>
@@ -127,12 +127,13 @@
       noBtn.style.top = y + "px";
     }
 
+    // NO button always escapes 😈
     moveNo();
-
     noBtn.addEventListener("mouseenter", moveNo);
     noBtn.addEventListener("touchstart", moveNo);
     noBtn.addEventListener("click", moveNo);
 
+    // YES wins 💖
     yesBtn.addEventListener("click", () => {
       question.style.display = "none";
       yesBtn.style.display = "none";
